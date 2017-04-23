@@ -3,7 +3,7 @@
 # 
 # Usage ./simple_haproxy_stats.sh <backend> <server> <metric> <stats_file>
 # 
-DEBUG=1
+DEBUG=0
 HAPROXY_SOCKET="/var/lib/haproxy/stats" # change 
 BACKEND=$1
 SERVER=$2
@@ -18,11 +18,12 @@ function debug {
 	fi
 }
 function generate_cache_file {
-	echo `echo "show stat" | $SOCAT_BIN $HAPROXY_SOCKET stdio` > $CACHE_FILE
+	echo "show stat" | $SOCAT_BIN $HAPROXY_SOCKET stdio > $CACHE_FILE
 }
 function get_stat_from_cache() {
 	RES=`grep -i $BACKEND,$SERVER $CACHE_FILE | awk -F, -v column=$1 '{print $column}'`
 	debug "$BACKEND / $SERVER $METRIC $1 = $RES"
+	echo $RES
 }
 
 # create if doesnt exists
@@ -42,7 +43,7 @@ if [ $DIFF -gt $CACHE_EXPIRATION_TIME_SECONDS ]; then
 	generate_cache_file
 fi
 
-
+# Thanks to anapsix (https://github.com/anapsix/zabbix-haproxy)
 MAP="
 1:pxname:@
 2:svname:@
