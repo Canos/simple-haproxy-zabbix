@@ -39,7 +39,8 @@ while IFS='' read -r line || [[ -n "$line" ]] ; do
 	debug $r	
 done < "$CACHE_FILE_NAME"
 
-r=${r::-1}
+
+r="${r%?}"
 r="{\"data\":["$r"\n]}"
 debug "$r"
 
