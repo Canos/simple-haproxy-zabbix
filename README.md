@@ -1,7 +1,7 @@
 simple-haproxy-zabbix
 =====================
 
-Simple monitoring haproxy stats from zabbix
+Simple monitoring haproxy stats from zabbix.  
 Features:
 *  Cache haproxy responses
 *  Stats per backend and per server
@@ -11,9 +11,9 @@ Features:
 Install
 -------
 
-``mkdir -p /var/lib/zabbix/haproxy`` 
-Place scripts ``simple_haproxy_stats.sh`` and ``simple_haproxy_discovery.sh``  in ``/var/lib/zabbix/haproxy``  
-Check if `chmod +x /var/lib/zabbix/haproxy/simple_haproxy_stats.sh`   
+``sudo mkdir -p /var/lib/zabbix/haproxy``  
+Put scripts ``simple_haproxy_stats.sh`` and ``simple_haproxy_discovery.sh``  in ``/var/lib/zabbix/haproxy``  
+Check if pers are right `chmod +x /var/lib/zabbix/haproxy/*.sh`   
 Modify haproxy socket path in `simple_haproxy_stats.sh`   
 Edit line starting with `HAPROXY_SOCKET="/var/lib/haproxy/stats"`  
 
@@ -26,10 +26,17 @@ You will have to add some configuration to haproxy config file (usually haproxy.
 ```
 global
     stats socket /var/lib/haproxy/stats mode 666 level admin
-```
+```  
+Notice: mode 666 if zabbix user is running zabbix-agent.
 
 Test
 -------
+``/var/lib/zabbix/haproxy/simple_haproxy_discovery.sh ``
+Should return a json with your fronts and servers.  
+
+ ``/var/lib/zabbix/haproxy/simple_haproxy_stats.sh <backend_name> <server_name> hrsp_2xx``
+ Should return the number of 200 OK responses of your backend_name/server_name.    
+
 
 
 Greetings 
