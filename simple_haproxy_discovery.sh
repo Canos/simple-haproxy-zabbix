@@ -21,9 +21,7 @@ function debug {
 }
 
 line_number=0
-RES=`echo "show servers state" | $SOCAT_BIN $HAPROXY_SOCKET stdio`
-echo $RES > $CACHE_FILE_NAME
-#RES=$1
+echo "show servers state" | $SOCAT_BIN $HAPROXY_SOCKET stdio > $CACHE_FILE_NAME
 r=""
 while IFS='' read -r line || [[ -n "$line" ]] ; do
 	((line_number++))
@@ -32,7 +30,11 @@ while IFS='' read -r line || [[ -n "$line" ]] ; do
 	fi		
 	debug "$line"
 	
-	IFS=' ' read -ra SERVER <<< "$line"	
+	IFS=' ' read -ra SERVER <<< "$line"
+	if [ -z ${SERVER[1]} ]; then
+		continue
+	fi
+	
 	r="$r\n\t{\"{#BACKEND_NAME}\":\""${SERVER[1]}"\",\"{#SERVER_NAME}\":\""${SERVER[3]}"\"},"
 	debug $r	
 done < "$CACHE_FILE_NAME"
