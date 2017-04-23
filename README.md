@@ -13,12 +13,15 @@ Install
 
 ``sudo mkdir -p /var/lib/zabbix/haproxy``  
 Put scripts ``simple_haproxy_stats.sh`` and ``simple_haproxy_discovery.sh``  in ``/var/lib/zabbix/haproxy``  
-Check if pers are right `chmod +x /var/lib/zabbix/haproxy/*.sh`   
+Check if perms are right `chmod +x /var/lib/zabbix/haproxy/*.sh`   
 Modify haproxy socket path in `simple_haproxy_stats.sh`   
 Edit line starting with `HAPROXY_SOCKET="/var/lib/haproxy/stats"`  
 
-HAProxy config
---------------
+HAProxy requisites
+-------------------
+
+HAProxy 1.6.x is required.  
+Autodiscovery feature uses "set server state" command through socket that appears in HAProxy 1.6.     
 
 It's necessary to be able to acces to haproxy socket.  
 You will have to add some configuration to haproxy config file (usually haproxy.cfg)
