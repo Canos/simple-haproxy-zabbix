@@ -13,9 +13,14 @@ function debug {
 	fi
 }
 
+line_number=0
 RES=`echo "show servers state" | $SOCAT_BIN $HAPROXY_SOCKET stdio`
 while IFS='' read -r line || [[ -n "$line" ]] && ! $not_finished ; do
 	((line_number++))
+	if [ $line_number -eq 1 ]; then 
+		continue
+	fi
+		
 	debug "$line_number $line"	
 	
 	IFS=' ' read -ra SERVER <<< "$line"
@@ -28,5 +33,5 @@ while IFS='' read -r line || [[ -n "$line" ]] && ! $not_finished ; do
 	
 	
 done < "$RES"
-echo -e '{\n\t"data":[\n'${serverlist#,}']}'
+# echo -e '{\n\t"data":[\n'${serverlist#,}']}'
         
