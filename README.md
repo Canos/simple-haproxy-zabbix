@@ -2,8 +2,11 @@ simple-haproxy-zabbix
 =====================
 
 Simple monitoring haproxy stats from zabbix
-Monitor zabbix stats in a cached way
-Requests stats per backend and server
+Features:
+*  Cache haproxy responses
+*  Stats per backend and per server
+*  No need to create items in zabbix, uses zabbix discovery features
+*  Http Mode Ready, 2xx, 3xx, etc. items ready.  
 
 Install
 -------
@@ -31,8 +34,8 @@ Test
 
 Greetings 
 ---------
-Thanks to anapsix (https://github.com/anapsix/zabbix-haproxy) 
-He made a very complete plugin but sometimes is hard to config and 
+Thanks to anapsix (https://github.com/anapsix/zabbix-haproxy)   
+He made a very complete plugin but sometimes is hard to make it work. 
 
 
 
