@@ -1,9 +1,15 @@
 #!/bin/bash
 
 # 
-# Usage ./simple_haproxy_discovery.sh <[BACKENDS|SERVERS]>
+# Usage ./simple_haproxy_discovery.sh 
 # 
-DEBUG=1
+#  Should return something like this
+# {"data":[
+#	{"{#BACKEND_NAME}":"web_back","{#SERVER_NAME}":"front01"},
+#	{"{#BACKEND_NAME}":"web_back","{#SERVER_NAME}":"front02"}
+# ]}
+# 
+DEBUG=0
 HAPROXY_SOCKET="/var/lib/haproxy/stats" # change
 SOCAT_BIN="$(which socat)"
 
@@ -15,23 +21,21 @@ function debug {
 
 line_number=0
 RES=`echo "show servers state" | $SOCAT_BIN $HAPROXY_SOCKET stdio`
-while IFS='' read -r line || [[ -n "$line" ]] && ! $not_finished ; do
+#RES=$1
+r=""
+while IFS='' read -r line || [[ -n "$line" ]] ; do
 	((line_number++))
-	if [ $line_number -eq 1 ]; then 
+	if [ $line_number -le 2 ]; then 
 		continue
-	fi
-		
-	debug "$line_number $line"	
+	fi		
+	debug "$line"	
 	
-	IFS=' ' read -ra SERVER <<< "$line"
-	
-	
-	
-	#for backend in $(get_stats | grep BACKEND | cut -d, -f1 | uniq); do
-     #for server in $(get_stats | grep "^${backend}," | grep -v BACKEND | cut -d, -f2); do
-      #serverlist="$serverlist,\n"'\t\t{\n\t\t\t"{#BACKEND_NAME}":"'$backend'",\n\t\t\t"{#SERVER_NAME}":"'$server'"}'
-	
-	
+	IFS=' ' read -ra SERVER <<< "$line"	
+	r="$r\n\t{\"{#BACKEND_NAME}\":\""${SERVER[1]}"\",\"{#SERVER_NAME}\":\""${SERVER[3]}"\"},"		
 done < "$RES"
-# echo -e '{\n\t"data":[\n'${serverlist#,}']}'
+
+r="{\"data\":["$r"\n]}"
+debug "$r"
+
+printf $r
         
