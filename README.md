@@ -8,7 +8,8 @@ Requests stats per backend and server
 Install
 -------
 
-Place ``simple_haproxy_stats.sh`` in ``/var/lib/zabbix/haproxy``  
+``mkdir -p /var/lib/zabbix/haproxy`` 
+Place scripts ``simple_haproxy_stats.sh`` and ``simple_haproxy_discovery.sh``  in ``/var/lib/zabbix/haproxy``  
 Check if `chmod +x /var/lib/zabbix/haproxy/simple_haproxy_stats.sh`   
 Modify haproxy socket path in `simple_haproxy_stats.sh`   
 Edit line starting with `HAPROXY_SOCKET="/var/lib/haproxy/stats"`  
