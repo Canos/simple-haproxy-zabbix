@@ -20,7 +20,7 @@ Edit line starting with `HAPROXY_SOCKET="/var/lib/haproxy/stats"`
 HAProxy requisites
 -------------------
 
-HAProxy 1.6.x is required.  
+HAProxy 1.6.x and ``socat`` are required.
 Autodiscovery feature uses "set server state" command through socket that appears in HAProxy 1.6.     
 
 It's necessary to be able to acces to haproxy socket.  
@@ -31,6 +31,8 @@ global
     stats socket /var/lib/haproxy/stats mode 666 level admin
 ```  
 Notice: mode 666 if zabbix user is running zabbix-agent.
+
+
 
 Test
 -------

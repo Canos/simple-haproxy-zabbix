@@ -10,16 +10,19 @@
 # ]}
 # 
 DEBUG=0
+LOGFILE="/tmp/simple_haproxy_discovery.log"
 HAPROXY_SOCKET="/var/lib/haproxy/stats" # change
 SOCAT_BIN="$(which socat)"
 CACHE_FILE_NAME="/tmp/simple_haproxy_servers.txt"
 
 function debug { 
 	if [[ $DEBUG == 1 ]]; then
-		echo $@
+		echo $@ >> $LOGFILE
 	fi
 }
 
+
+debug "$(date) simple_haproxy_discovery"
 line_number=0
 echo "show servers state" | $SOCAT_BIN $HAPROXY_SOCKET stdio > $CACHE_FILE_NAME
 r=""

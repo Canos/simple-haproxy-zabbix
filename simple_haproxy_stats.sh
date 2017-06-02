@@ -4,7 +4,8 @@
 # Usage ./simple_haproxy_stats.sh <backend> <server> <metric> <stats_file>
 # 
 DEBUG=0
-HAPROXY_SOCKET="/var/lib/haproxy/stats" # change 
+LOGFILE="/tmp/simple_haproxy_stats.log"
+HAPROXY_SOCKET="/var/lib/haproxy/stats" # change it
 BACKEND=$1
 SERVER=$2
 METRIC=$3
@@ -14,29 +15,29 @@ CACHE_FILE="/tmp/simple_haproxy_stats.txt"
 
 function debug { 
 	if [[ $DEBUG == 1 ]]; then
-		echo $@
+		echo "$(date) $@" >> $LOGFILE
 	fi
 }
 function generate_cache_file {
 	echo "show stat" | $SOCAT_BIN $HAPROXY_SOCKET stdio > $CACHE_FILE
 }
 function get_stat_from_cache() {
-	RES=`grep -i $BACKEND,$SERVER $CACHE_FILE | awk -F, -v column=$1 '{print $column}'`
-	debug "$BACKEND / $SERVER $METRIC $1 = $RES"
+	RES=`grep -F $BACKEND,$SERVER $CACHE_FILE | awk -F, -v column=$1 '{print $column}'`
+	debug "get_stat_from_cache $BACKEND / $SERVER $METRIC $1 = $RES"
 	echo $RES
 }
 
 # create if doesnt exists
 if [ ! -e $CACHE_FILE ]; then
 	debug "Creating cache file"
-	generate_cache_file
+	TIMEFLM=generate_cache_file
 fi
 
 # recreate cache file if expired
 TIMEFLM=`stat -c %Y $CACHE_FILE`
 TIMENOW=`date +%s`
 DIFF=$(($TIMENOW - $TIMEFLM))
-debug "$TIMENOW - $TIMEFLM = $DIFF > $CACHE_EXPIRATION_TIME_SECONDS" 
+# debug "Expired cache? $TIMENOW - $TIMEFLM = $DIFF > $CACHE_EXPIRATION_TIME_SECONDS" 
 if [ $DIFF -gt $CACHE_EXPIRATION_TIME_SECONDS ]; then
 	debug "Expired cache file"
 	rm -f $CACHEFILE

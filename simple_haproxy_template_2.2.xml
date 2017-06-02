@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2017-04-25T12:33:27Z</date>
+    <date>2017-06-02T07:40:09Z</date>
     <groups>
         <group>
             <name>Balancer servers</name>
@@ -59,7 +59,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},chkdown]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -102,10 +102,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},chkfail]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -145,7 +145,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},econ]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>1</status>
@@ -188,7 +188,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},ereq]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>1</status>
@@ -231,10 +231,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},eresp]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -274,10 +274,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_1xx]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -317,7 +317,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_2xx]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -360,7 +360,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_3xx]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -403,7 +403,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_4xx]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -446,7 +446,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_5xx]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -489,10 +489,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},hrsp_other]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -532,7 +532,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},qcur]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -578,7 +578,7 @@
                             <delay>3600</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -618,7 +618,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},scur]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -707,7 +707,7 @@
                             <delay>3600</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -747,11 +747,11 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},status]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
+                            <status>1</status>
+                            <value_type>1</value_type>
                             <allowed_hosts/>
                             <units/>
                             <delta>0</delta>
@@ -790,10 +790,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},ctime]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -833,10 +833,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},qtime]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -876,7 +876,7 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},rtime]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
                             <status>0</status>
@@ -919,10 +919,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},ttime]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -962,10 +962,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},bin]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
@@ -1005,10 +1005,10 @@
                             <multiplier>0</multiplier>
                             <snmp_oid/>
                             <key>haproxy.simple.stat[{#BACKEND_NAME},{#SERVER_NAME},bout]</key>
-                            <delay>30</delay>
+                            <delay>60</delay>
                             <history>90</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units/>
